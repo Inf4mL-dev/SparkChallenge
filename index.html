@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111B2E" media="(prefers-color-scheme: dark)">
+  <script>
+    /* Apply the saved or device theme before first paint so there is no flash. */
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('rr_theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <title>Rescue Renewals</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/flow-a.css">
+  <link rel="stylesheet" href="css/flow-b.css">
+  <link rel="stylesheet" href="css/extras.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#app">Skip to main content</a>
+  <header class="app-header" id="app-header">
+    <div class="app-header-top">
+      <a class="app-brand" href="#/" aria-label="Rescue Renewals home">
+        <span class="app-logo">
+          <img class="app-logo-img" src="https://myenterprisegroup.io/gh-insurance/wp-content/uploads/sites/2/2025/07/Enterprise-Insurance-logo_Blue.png" alt="Enterprise Insurance" height="32"
+               onerror="document.getElementById('app-header').classList.add('logo-failed')">
+        </span>
+        <span class="app-brand-text">
+          <span class="app-title">Rescue Renewals</span>
+        </span>
+      </a>
+      <div class="app-header-tools">
+        <span id="header-extras"></span>
+        <span id="theme-slot"></span>
+      </div>
+    </div>
+    <nav class="app-nav" id="app-nav" aria-label="Page navigation" hidden></nav>
+  </header>
+  <nav class="progress" id="progress" aria-label="Renewal progress" hidden></nav>
+  <main id="app" tabindex="-1"></main>
+  <noscript>Rescue Renewals needs JavaScript to run. Turn it on in your browser settings and reload this page.</noscript>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

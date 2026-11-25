@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Page not found · Rescue Renewals</title>
+  <meta name="robots" content="noindex">
+  <!-- GitHub Pages serves this file, with a real 404 status, for any address that does not exist.
+       The address can be several folders deep, so work out the site root before loading files. -->
+  <script>
+    (function () {
+      var parts = location.pathname.split('/').filter(Boolean);
+      var root = /\.github\.io$/.test(location.hostname) && parts.length ? '/' + parts[0] + '/' : '/';
+      window.__root = root;
+      document.write('<base href="' + root + '">');
+    })();
+  </script>
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('rr_theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+  <header class="app-header">
+    <a class="app-brand" id="home-brand" href="./" aria-label="Rescue Renewals home">
+      <span class="app-logo">
+        <img class="app-logo-img" src="https://myenterprisegroup.io/gh-insurance/wp-content/uploads/sites/2/2025/07/Enterprise-Insurance-logo_Blue.png" alt="Enterprise Insurance" height="32" onerror="this.closest('.app-header').classList.add('logo-failed')">
+      </span>
+      <span class="app-brand-text"><span class="app-title">Rescue Renewals</span></span>
+    </a>
+  </header>
+  <main class="screen">
+    <div class="card app-state">
+      <span class="app-state-icon" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </span>
+      <h1 class="title">We could not find that page</h1>
+      <p class="subtitle">The address may be mistyped, or the page may have moved. Start from the beginning to renew your policy.</p>
+      <div class="app-state-actions">
+        <a class="btn btn-primary btn-block" href="./">Go to the start page</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

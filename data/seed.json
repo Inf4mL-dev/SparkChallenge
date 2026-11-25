@@ -1,0 +1,50 @@
+{
+  "insurer": {
+    "name": "Demo Insurance Company Ltd",
+    "shortName": "Demo Insurance",
+    "address": "12 Independence Avenue, Accra, Ghana",
+    "phone": "0302 000 000",
+    "email": "support@demoinsurance.example",
+    "claimsLine": "0800 000 000"
+  },
+  "config": {
+    "currency": "GHS",
+    "stickerFee": 79,
+    "renewalTermMonths": 12,
+    "verificationDelayMs": 3000,
+    "lookupDelayMs": 2500,
+    "paymentDelayMs": 3000,
+    "processingSecondsMin": 120,
+    "processingSecondsMax": 180,
+    "skipToSeconds": 10,
+    "heroClientId": "CL-001",
+    "ranking": { "expiringWithinDays": 30, "lapsedWithinDays": 180 },
+    "useMultipliers": { "Private": 1.0, "Commercial (ride-hailing)": 1.5 }
+  },
+  "clients": [
+    { "id": "CL-001", "name": "Kwame Mensah", "ghanaCard": "GHA-123456789-0", "phone": "0240000001", "email": "kwame.mensah@example.com", "verification": { "pass": true } },
+    { "id": "CL-002", "name": "Abena Owusu", "ghanaCard": "GHA-987654321-5", "phone": "0200000002", "email": "abena.owusu@example.com", "verification": { "pass": false, "reason": "The name on this Ghana Card does not match the phone number registration." } },
+    { "id": "CL-003", "name": "Yaw Boateng", "ghanaCard": "GHA-456123789-3", "phone": "0550000003", "email": "yaw.boateng@example.com", "verification": { "pass": true } }
+  ],
+  "vehicles": [
+    { "id": "VH-001", "plate": "GR 1234-23", "make": "Toyota", "model": "Corolla", "year": 2018, "colour": "White", "use": "Private", "chassisNo": "DEMO-CHS-0001" },
+    { "id": "VH-002", "plate": "GT 5678-21", "make": "Honda", "model": "CR-V", "year": 2016, "colour": "Silver", "use": "Private", "chassisNo": "DEMO-CHS-0002" },
+    { "id": "VH-003", "plate": "AS 9012-22", "make": "Hyundai", "model": "Elantra", "year": 2020, "colour": "Blue", "use": "Private", "chassisNo": "DEMO-CHS-0003" },
+    { "id": "VH-004", "plate": "GN 7788-22", "make": "Kia", "model": "Rio", "year": 2019, "colour": "Red", "use": "Private", "chassisNo": "DEMO-CHS-0004" },
+    { "id": "VH-005", "plate": "GW 3456-19", "make": "Nissan", "model": "Sentra", "year": 2014, "colour": "Black", "use": "Private", "chassisNo": "DEMO-CHS-0005" }
+  ],
+  "policies": [
+    { "id": "PL-001", "policyNumber": "RR-MTR-2025-000451", "clientId": "CL-001", "vehicleId": "VH-001", "coverType": "Comprehensive", "status": "lapsed", "expiryOffsetDays": -95, "renewalBase": 1200 },
+    { "id": "PL-002", "policyNumber": "RR-MTR-2025-000452", "clientId": "CL-001", "vehicleId": "VH-002", "coverType": "Third Party", "status": "lapsed", "expiryOffsetDays": -130, "renewalBase": 500 },
+    { "id": "PL-003", "policyNumber": "RR-MTR-2025-000453", "clientId": "CL-001", "vehicleId": "VH-003", "coverType": "Comprehensive", "status": "lapsed", "expiryOffsetDays": -160, "renewalBase": 1400 },
+    { "id": "PL-004", "policyNumber": "RR-MTR-2025-000454", "clientId": "CL-003", "vehicleId": "VH-004", "coverType": "Comprehensive", "status": "lapsed", "expiryOffsetDays": -110, "renewalBase": 1000 },
+    { "id": "PL-005", "policyNumber": "RR-MTR-2025-000455", "clientId": "CL-001", "vehicleId": "VH-005", "coverType": "Third Party", "status": "cancelled", "expiryOffsetDays": -180, "renewalBase": 480 }
+  ],
+  "registry": [
+    { "vehicleId": "VH-001", "colour": "Silver", "use": "Private" },
+    { "vehicleId": "VH-002", "colour": "Silver", "use": "Private", "chassisNo": "DEMO-CHS-0092" },
+    { "vehicleId": "VH-003", "colour": "Blue", "use": "Private", "year": 2019 },
+    { "vehicleId": "VH-004", "colour": "Red", "use": "Commercial (ride-hailing)" },
+    { "vehicleId": "VH-005", "colour": "Black", "use": "Private" }
+  ]
+}
