@@ -18,9 +18,9 @@ const STRINGS = {
   reference: 'Renewal reference',
   correctionLabels: { colour: 'Corrected vehicle colour', use: 'Corrected vehicle use', year: 'Corrected year of manufacture', chassisNo: 'Corrected chassis number' },
   breakdownTitle: 'Premium breakdown',
-  base: 'Base premium',
-  stickerFee: 'Sticker fee',
-  total: 'Total to pay',
+  base: 'Premium',
+  stickerFee: 'Sticker',
+  total: 'Total due',
   methodTitle: 'Payment method',
   methods: {
     mobile_money: { title: 'Mobile money', hint: 'Approve on your phone' },

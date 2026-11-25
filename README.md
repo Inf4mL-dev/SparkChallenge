@@ -30,8 +30,8 @@ All paths are relative, so it works under a repository sub-path. Pages serves ov
 
 | Client | Ghana Card | Phone | What it shows |
 | --- | --- | --- | --- |
-| Kwame Mensah | `GHA-123456789-0` | `0240000001` | Main demo. Four policies; the Corolla is highlighted. Colour discrepancy (White on policy, Silver in registry). Total GH₵1,279.00 |
-| Yaw Boateng | `GHA-456123789-3` | `0550000003` | Vehicle use discrepancy that changes the premium from GH₵1,079.00 to GH₵1,579.00 |
+| Kwame Mensah | `GHA-123456789-0` | `0240000001` | Main demo. Four policies; the Corolla is highlighted. Colour discrepancy (White on policy, Silver in registry). Total GH₵557.00 after NIC correction |
+| Yaw Boateng | `GHA-456123789-3` | `0550000003` | Vehicle use discrepancy that changes the premium (NIC-corrected to the same GH₵557.00 total) |
 | Abena Owusu | `GHA-987654321-5` | `0200000002` | Failed identity verification |
 
 All demo data lives in `data/seed.json`. Policy expiry dates are stored as days from today, so the demo stays valid on any date. Edit names, plates, card numbers and premiums there.

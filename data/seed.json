@@ -10,6 +10,7 @@
   "config": {
     "currency": "GHS",
     "stickerFee": 79,
+    "nicPremiumRanges": { "Third Party": { "min": 556.00, "max": 612.70 } },
     "renewalTermMonths": 12,
     "verificationDelayMs": 3000,
     "lookupDelayMs": 2500,
@@ -34,11 +35,11 @@
     { "id": "VH-005", "plate": "GW 3456-19", "make": "Nissan", "model": "Sentra", "year": 2014, "colour": "Black", "use": "Private", "chassisNo": "DEMO-CHS-0005" }
   ],
   "policies": [
-    { "id": "PL-001", "policyNumber": "RR-MTR-2025-000451", "clientId": "CL-001", "vehicleId": "VH-001", "coverType": "Comprehensive", "status": "lapsed", "expiryOffsetDays": -95, "renewalBase": 1200 },
-    { "id": "PL-002", "policyNumber": "RR-MTR-2025-000452", "clientId": "CL-001", "vehicleId": "VH-002", "coverType": "Third Party", "status": "lapsed", "expiryOffsetDays": -130, "renewalBase": 500 },
-    { "id": "PL-003", "policyNumber": "RR-MTR-2025-000453", "clientId": "CL-001", "vehicleId": "VH-003", "coverType": "Comprehensive", "status": "lapsed", "expiryOffsetDays": -160, "renewalBase": 1400 },
-    { "id": "PL-004", "policyNumber": "RR-MTR-2025-000454", "clientId": "CL-003", "vehicleId": "VH-004", "coverType": "Comprehensive", "status": "lapsed", "expiryOffsetDays": -110, "renewalBase": 1000 },
-    { "id": "PL-005", "policyNumber": "RR-MTR-2025-000455", "clientId": "CL-001", "vehicleId": "VH-005", "coverType": "Third Party", "status": "cancelled", "expiryOffsetDays": -180, "renewalBase": 480 }
+    { "id": "PL-001", "policyNumber": "RR-MTR-2025-000451", "clientId": "CL-001", "vehicleId": "VH-001", "coverType": "Third Party", "status": "lapsed", "expiryOffsetDays": -95, "renewalBase": 451 },
+    { "id": "PL-002", "policyNumber": "RR-MTR-2025-000452", "clientId": "CL-001", "vehicleId": "VH-002", "coverType": "Third Party", "status": "lapsed", "expiryOffsetDays": -130, "renewalBase": 469 },
+    { "id": "PL-003", "policyNumber": "RR-MTR-2025-000453", "clientId": "CL-001", "vehicleId": "VH-003", "coverType": "Third Party", "status": "lapsed", "expiryOffsetDays": -160, "renewalBase": 462 },
+    { "id": "PL-004", "policyNumber": "RR-MTR-2025-000454", "clientId": "CL-003", "vehicleId": "VH-004", "coverType": "Third Party", "status": "lapsed", "expiryOffsetDays": -110, "renewalBase": 300 },
+    { "id": "PL-005", "policyNumber": "RR-MTR-2025-000455", "clientId": "CL-001", "vehicleId": "VH-005", "coverType": "Third Party", "status": "cancelled", "expiryOffsetDays": -180, "renewalBase": 440 }
   ],
   "registry": [
     { "vehicleId": "VH-001", "colour": "Silver", "use": "Private" },

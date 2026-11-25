@@ -5,8 +5,8 @@ const STRINGS = {
   detailsTitle: 'Policy details',
   policyNo: 'Policy number', plate: 'Plate', vehicle: 'Vehicle', colour: 'Colour', use: 'Use', chassis: 'Chassis number',
   cover: 'Cover type', expiry: 'Current expiry date',
-  premiumTitle: 'Renewal premium', base: 'Premium', stickerFee: 'Sticker fee', total: 'Total',
-  warnTitle: 'We found a difference in your records',
+  premiumTitle: 'Renewal premium', base: 'Premium', stickerFee: 'Sticker', total: 'Total due',
+  warnTitle: 'We found a difference in the MID database',
   onPolicy: 'On your policy', inRegistry: 'In the vehicle registry',
   chooseTitle: 'Which is correct?', other: 'Something else', otherLabel: 'Enter the correct value',
   otherError: 'Enter the correct value, at least 2 characters.',
@@ -14,6 +14,11 @@ const STRINGS = {
   confirming: 'Saving your correction',
   done: (f, v) => 'Thank you. Your ' + f.toLowerCase() + ' is now recorded as ' + v + '.',
   changed: (a, b) => 'Premium updated from ' + a + ' to ' + b,
+  nicTitle: 'NIC premium validation failed for these submission details.',
+  nicOutside: (n) => 'Premium ' + n.submitted + ' is outside the allowed range ' + n.min.toFixed(2) + ' - ' + n.max.toFixed(2) + ' GHS',
+  nicCorrected: (n) => 'Premium corrected to ' + n.corrected,
+  nicAsk: 'Do you want to proceed with the corrected premium?',
+  proceed: 'Proceed',
   cont: 'Continue to payment', continuing: 'Preparing your payment', back: 'Back to your policies',
   error: 'We could not save that. Check your connection and try again.'
 };
@@ -79,6 +84,16 @@ export function render(root, ctx) {
 
     if (d && !d.resolved) blocks.push(discrepancyCard(d, policy, baseQuote));
 
+    // NIC premium validation runs on the final premium, so only once any discrepancy is resolved.
+    const nic = resolved && quote.nic && !quote.nic.valid ? quote.nic : null;
+    if (nic) {
+      blocks.push(h('section', { class: 'card stack-tight', role: 'alert', 'aria-labelledby': 'review-nic-title' },
+        h('h2', { class: 'review-notice-title', id: 'review-nic-title' }, ui.icon('alert', 20), STRINGS.nicTitle),
+        h('p', {}, STRINGS.nicOutside(nic)),
+        h('p', {}, h('strong', {}, STRINGS.nicCorrected(nic))),
+        h('p', { class: 'field-hint' }, STRINGS.nicAsk)));
+    }
+
     const contBtn = h('button', {
       class: 'btn btn-primary btn-block', type: 'button', disabled: !resolved,
       onclick: async (e) => {
@@ -98,7 +113,7 @@ export function render(root, ctx) {
           navigate('/pay');
         } catch (err) { ui.toast(STRINGS.error, 'error'); ui.setButtonState(b, 'idle'); }
       }
-    }, STRINGS.cont, ui.icon('arrow-right', 20));
+    }, nic ? STRINGS.proceed : STRINGS.cont, ui.icon('arrow-right', 20));
     blocks.push(h('div', { class: 'review-actions' },
       contBtn,
       resolved ? null : h('p', { class: 'field-hint' }, 'Choose the correct value above to continue.'),

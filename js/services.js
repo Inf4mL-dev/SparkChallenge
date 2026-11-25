@@ -175,9 +175,19 @@ export async function quoteRenewal(policyId, corrections) {
   const originalUse = v.use;
   const correctedUse = (corrections && corrections.use) || originalUse;
   const factor = (mult[correctedUse] || 1) / (mult[originalUse] || 1);
-  const base = round2(raw.renewalBase * factor);
-  const levies = round2(base * seed.config.levyRate);
-  return { base, levies, total: round2(base + levies), currency: seed.config.currency };
+  const sticker = seed.config.stickerFee;
+  const currency = seed.config.currency;
+  // Submitted premium = what the insurer would send to NIC: policy premium plus the sticker fee.
+  const submitted = round2(raw.renewalBase * factor + sticker);
+  const range = (seed.config.nicPremiumRanges || {})[raw.coverType];
+  let total = submitted;
+  let nic = null;
+  if (range && (submitted < range.min || submitted > range.max)) {
+    // Corrected to a whole-cedi amount inside the allowed range.
+    total = submitted < range.min ? Math.floor(range.min) + 1 : Math.floor(range.max);
+    nic = { valid: false, submitted, min: range.min, max: range.max, corrected: total };
+  }
+  return { base: round2(total - sticker), stickerFee: sticker, total, currency, nic };
 }
 
 /* ---------- renewal lifecycle ---------- */
@@ -214,11 +224,16 @@ export async function simulatePayment({ renewalRef, method, msisdn }) {
   return { ok: true, providerRef };
 }
 
+function processingSeconds() {
+  const { processingSecondsMin: lo, processingSecondsMax: hi } = getSeed().config;
+  return lo + Math.floor(Math.random() * (hi - lo + 1));
+}
+
 export function startProcessing(renewalRef) {
   const r = findRenewal(renewalRef);
   if (r.status === 'processing' || r.status === 'issued') return r;
   const now = Date.now();
-  const next = { ...r, status: 'processing', processingStartedAt: now, processingEndsAt: now + getSeed().config.processingSeconds * 1000 };
+  const next = { ...r, status: 'processing', processingStartedAt: now, processingEndsAt: now + processingSeconds() * 1000 };
   saveRenewal(next);
   logAudit('renewal', r.reference, 'processing_started', { endsAt: next.processingEndsAt });
   return next;
